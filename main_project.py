@@ -6,7 +6,7 @@ import seaborn as sns
 from sklearn.model_selection import train_test_split
 
 
-print("*********************q1***********************")
+print("Performing an EDA on the above datasets to explore and finding the best crop to grow in each State.")
 
 #from google.colab import drive 
 #drive.mount('/content/drive')
@@ -70,7 +70,7 @@ print("The factors affecting the most are")
 print(j)
 
 
-print("*********************Q2***********************")
+print("The above datasets provide a huge amount of information on crop production in India ranging from several years.Based on the Information the ultimate goal would be to predict crop production using powerful machine learning techniques. But before you can build any model, you need to collect the relevant data in one place.There are various datasets provided in the above link, but you might need to do some preprocessing on them to make them suitable for any analysis, or building your machine learning model. ")
 # shape func will tell about the no of rows and columns 
 print("shapes of different dataframes ----->")
 print(df1.shape)
@@ -97,7 +97,7 @@ reg.fit(x_train,y_train)
 y_pred=reg.predict(x_test)
 print("predicted values ---->",y_pred)
 
-print("*********************Q3***********************")
+print("Q3- Create an interface(using statements), where the user inputs their Geographic Location(District), and based on that your model should generate output prescribing them the best crop to grow in that region. ")
 e=pd.read_csv(r'C:\Users\HEMANT\Desktop\New folder\crop_production.csv')
 # filling the nan values with mean
 e.fillna(e["Production"].mean(),inplace=True)
@@ -125,7 +125,7 @@ try:
 except:
     print("entered district is not in the dataset")
 
-print("*********************Q4***********************")
+print("Q4- For more accurate prescription, collect more metrics(features) from the user on which the crop yield is dependent, and then predict the crop to grow, along with the expected profit from that crop. ")
 d=pd.read_csv(r'C:\Users\HEMANT\Desktop\New folder\state_wise_crop_production.csv')
 # new column as Cost 
 d['Cost']=(d['Cost of Cultivation (`/Hectare) A2+FL']+d['Cost of Cultivation (`/Hectare) C2']+d['Cost of Production (`/Quintal) C2'])
@@ -150,11 +150,11 @@ except:
     print("entered state is not in the dataset")
 
 
-print("*********************q5***********************")
+print("Q5- If any of the metrics is not available then the model should be able to handle such scenarios and predict the outcomes nonetheless.")
 print("solution of ques 5 is done in above quetions ,if there is not a feature matching with the dataset values ,then it will tell the user about it.")
 # using try and except the solution of q5 is already done in q3 and q4
 
-print("*********************Q6***********************")
+print("Q6- The final output should be in the form of a dataframe where columns should include the current crop the user is growing, the suggested crop, current profit from the present crop, expected profit from the predicted crop.")
 l=pd.read_csv(r'C:\Users\HEMANT\Desktop\New folder\cropproductiononvariousfactors.csv')
 l.sort_values("Production",inplace=True,ascending=False)
 l.sort_values("Rainfall",inplace=True,ascending=True)
@@ -162,14 +162,14 @@ l.drop_duplicates(subset="Crop",inplace=True)
 l.drop(['Rainfall','Temperature','Ph'],axis=1,inplace=True)
 print("crops which are being grown by farmers ,producion and crop conversion are -->",l)
 
-print("*********************Q7***********************")
+print("Q7- If the information about soil health is available, then suggest the prescriptive actions for the soil improvement if any, and the cost associated with the change. ")
 x=pd.read_csv(r'C:\Users\HEMANT\Desktop\New folder\cropproductiononvariousfactors.csv')
 x.sort_values("Production",inplace=True,ascending=False)
 x.drop_duplicates(subset="Crop",inplace=True)
 x.drop(['Rainfall','Temperature','Production'],axis=1,inplace=True)
 print("ph of the soil should be this which is given in the following dataset,for prescribed crops-->",x)
 
-print("*********************q8***********************")
+print("Q8- Experiment with various models for this project. And select the best one that fits the best in this situation. Give detailed analysis for your selection.")
 l=pd.read_csv(r'C:\Users\HEMANT\Desktop\New folder\cropproductiononvariousfactors.csv')
 p=l
 p.sort_values("Production",inplace=True,ascending=False)
@@ -186,8 +186,8 @@ from sklearn.linear_model import LinearRegression
 x_train,x_test,y_train,y_test=train_test_split(q,d,test_size=0.2,random_state=100)
 reg=LinearRegression()
 reg.fit(x_train,y_train)
-# print("score of linear regression in this project",(reg.score(x_test,y_test))*100)
-print("the score of linear regression is 96.0%")
+print("score of linear regression in this project",(reg.score(x_test,y_test))*100)
+# print("the score of linear regression is 96.0%")
 # Used the Linear regression.
 
 # Thank You
